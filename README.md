@@ -1,7 +1,7 @@
 
 # Github WebHook Deployer PHP Script
 
-- This is PHP webhook deployer script to auto git pull source code on server.
+- This is PHP Github webhook deployer script to auto git pull source code on server.
 
 - This webhook script can be used in Github, Bitbucket and Gitlab.
 
