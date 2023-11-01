@@ -32,10 +32,37 @@ $header = array('Accept: */*','Content-type: application/json','User-Agent: GitH
 $url = 'http://127.0.0.1/deploy.example.php';
 ```
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+## SSH Setup
+On Ubuntu, Apache user is www-data. Create public key for user www-data (id_rsa.pub) at path /var/www/.ssh
+```shell
+sudo -u www-data ssh-keygen -t rsa
+```
+Add github.com RSA to /var/www/.ssh/known_hosts
+```shell
+sudo ssh-keyscan -t rsa github.com >> /var/www/.ssh/known_hosts
+```
+Add github.com RSA to /var/www/.ssh/known_hosts
+```shell
+sudo ssh-keyscan -t rsa github.com >> /var/www/.ssh/known_hosts
+```
+Make sure /var/www/.ssh is under www-data:www-data with 775 permission
+```shell
+ubuntu@localhost:/var/www$ pwd
+/var/www
+ubuntu@localhost:/var/www$ ls -la
+total 16
+drwxr-xr-x  4 root     root     4096 Mar 31 16:57 .
+drwxr-xr-x 15 root     root     4096 Sep 23  2019 ..
+drwxrwxr-x  2 www-data www-data 4096 Mar 31 17:03 .ssh
+drwxr-xr-x  5 root     root     4096 Mar 31 08:12 html
+```
+Add generated public key (id_rsa.pub) into Github "Deploy keys"
 
 ## License
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
 [MIT](https://choosealicense.com/licenses/mit/)
+
